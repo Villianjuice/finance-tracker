@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLogin } from '../../hooks/useLogin';
 import styles from './Login.module.css';
 
@@ -6,10 +7,12 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const {login, error, isPending} = useLogin()
+  const nav = useNavigate()
  
   const handleSubmit = async(e) => {
     e.preventDefault();
     await login(email, password)
+    nav('/')
   };
   return (
     <form onSubmit={handleSubmit} className={styles['login-form']}>
