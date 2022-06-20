@@ -7,22 +7,21 @@ export const useLogin = () => {
   const [isCanceled, setIsCanceled] = useState(false);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
-  const {dispatch} = useAuthContext()
+  const { dispatch } = useAuthContext();
 
   const login = async (email, password) => {
     setError(null);
     setIsPending(true);
 
     try {
-      const {user} = await signInWithEmailAndPassword(auth, email, password);
-      dispatch({type: 'LOGIN', payload: user})
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      dispatch({ type: 'LOGIN', payload: user });
       if (!isCanceled) {
         setError(null);
         setIsPending(false);
       }
     } catch (error) {
       if (!isCanceled) {
-        console.log(error.message);
         setError(error.message);
         setIsPending(false);
       }
