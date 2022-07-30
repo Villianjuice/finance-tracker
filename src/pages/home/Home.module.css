@@ -5,10 +5,10 @@
   margin: 60px auto;
 }
 .content {
-  padding-right: 30px;
+  padding-right: 15px;
 }
 .sidebar {
-  padding-left: 30px;
+  padding-left: 15px;
 }
 .sidebar form {
   padding: 20px;
@@ -54,3 +54,8 @@
   margin: 10px;
 }
 
+@media screen and (max-width: 650px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}

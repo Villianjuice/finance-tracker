@@ -8,20 +8,19 @@ import styles from './Navbar.module.css';
 
 export const Navbar = () => {
   const { user } = useAuthContext();
-  const {logout, error, isPending } = useLogout()
+  const { logout, error, isPending } = useLogout();
 
   useEffect(() => {
     console.log(user);
-  }, [user])
+  }, [user]);
   return (
     <nav className={styles.navbar}>
       <ul>
-        <li className={styles.title}>Мои финансы</li>
         {!user && (
           <>
             <li>
               <Link to="/login">Login</Link>
-            </li> 
+            </li>
             <li>
               <Link to="/signup">SignUp</Link>
             </li>
@@ -29,12 +28,15 @@ export const Navbar = () => {
         )}
         {user && (
           <>
-          <li>{user && user.displayName}</li>
-          <li>
-            <button className='btn' onClick={logout}>LogOut</button>
-          </li>
+            <li className={styles.title}>Мои финансы</li>
+
+            <li>{user && user.displayName}</li>
+            <li>
+              <button className="btn" onClick={logout}>
+                LogOut
+              </button>
+            </li>
           </>
-          
         )}
       </ul>
     </nav>
